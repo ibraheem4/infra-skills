@@ -1,0 +1,6 @@
+{
+  "name": "infra-skills",
+  "description": "Infrastructure and machine operations: AWS and Terraform, DNS delegation, mail authentication records, Google Workspace SSO cutover, social OAuth providers, per-PR preview environments, GCP resource sweeps, plus workstation operations — disk reclaim, hidden services, failing-fleet triage, safe repo removal and cold local bring-up.",
+  "version": "0.1.0",
+  "author": { "name": "Ibraheem Abdul-Malik", "url": "https://github.com/ibraheem4" }
+}
