@@ -202,6 +202,32 @@ unscoped. Re-run a policy simulation after any refactor of those lists.
 
 ### 7. Lifecycle: label, push, close, delete
 
+🔴 **Make the opt-in a label, not a word in the PR title.** Both gate spend, so the choice
+looks cosmetic and gets "simplified" to a title match during a rewrite. It is not cosmetic:
+
+- **A title is prose for humans.** Making it config means every edit to it is a
+  configuration change with a billing consequence — renaming a PR for clarity silently
+  creates or destroys an environment. A label is metadata, which is what metadata is for.
+- **A substring match collides with the vocabulary of the thing it gates.** In a repo whose
+  commit scopes look like `preview: fix the teardown guard`, every PR *about* the preview
+  system provisions one. Observed in the wild; harmless until it isn't.
+- **No permission boundary.** Anyone who can open a PR can spend money. Labelling is gated
+  on write/triage.
+- **No audit trail.** A label records who enabled it and when, in the timeline. A title edit
+  is buried in history.
+- **`unlabeled` is a free park signal** — turn a slot off without closing the PR. Titles give
+  you no such event.
+
+What a title genuinely wins: visible in list view without opening the PR, and no label to
+create first. Neither is worth the coupling.
+
+⚠️ **If a rewrite moves the trigger, say so in the PR body and fix the docs in the same
+change.** One real sequence: a label gate, then a rewrite that deleted the workflow holding
+it and shipped with no gate at all (every PR got an environment), then a day later a title
+match added back by someone who did not know a label had ever existed. The skill describing
+it stayed wrong for two days and sent its readers to add a label that fired nothing.
+
+
 | Event | Action | Why |
 |---|---|---|
 | `pull_request: labeled` | create + deploy | the label is the opt-in |
