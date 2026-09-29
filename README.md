@@ -1,3 +1,5 @@
+> **Moved.** This plugin now lives in [`ibraheem4/claude-marketplace` → `plugins/infra-skills`](https://github.com/ibraheem4/claude-marketplace/tree/main/plugins/infra-skills), history included. This repo is archived; install with `/plugin install infra-skills@ibraheem4`.
+
 # Infra Skills
 
 Infrastructure and machine operations for AI coding agents. Split out of
